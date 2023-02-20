@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { InfoComponent } from './info/info.component';
+import { ProductRoutingModule } from './product-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -11,7 +13,9 @@ import { InfoComponent } from './info/info.component';
     InfoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProductRoutingModule,
+    SharedModule
   ]
 })
 export class ProductModule { }
