@@ -1,0 +1,63 @@
+@import "./variables.scss";
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: $background-color;
+}
+
+.container {
+    max-width: 1000px;
+    min-width: $min-width;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    font-family: $font-family;
+    color: #868B8E;
+    font-size: $paragraphs-font-size;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-size: $headers-font-size;
+}
+
+a {
+    padding: 0;
+    margin: 0;
+
+    text-decoration: none;
+    color: $third-additional-color;
+    
+    transition-duration: 200ms;
+}
+
+a:hover {
+    color: $second-additional-color;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.btn {
+    color: $white;
+    font-size: $paragraphs-font-size;
+
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid $white;
+    transition-duration: 200ms;
+}
+
+.btn:hover {
+    opacity: 0.5;
+}

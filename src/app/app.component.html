@@ -1,2 +1,16 @@
-<h1>App Component</h1>
-<router-outlet></router-outlet>
+<div class="container">
+    <header class="header">
+        <nav class="header__nav">
+            <h1 class="header__main-link"><a routerLink="/">Angular technical task</a></h1>
+
+            <ul class="header__links">
+                <li class="header__item"><a routerLink="/user/login" class="header__link">Вход</a></li>
+                <li class="header__item"><a routerLink="/user/register" class="header__link">Регистрация</a></li>
+                <li class="header__item"><a routerLink="/product/list" class="header__link">Товары</a></li>
+                <li class="header__item"><a routerLink="/goods/list" class="header__link">Корзина</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <router-outlet></router-outlet>
+</div>
