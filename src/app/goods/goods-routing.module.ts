@@ -4,7 +4,7 @@ import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
-    {path: "goods/info", component: ListComponent},
+    {path: "goods/list", component: ListComponent},
     {path: "goods/add", component: AddComponent}
 ];
 
@@ -12,4 +12,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule { }
+export class GoodsRoutingModule { }

@@ -48,14 +48,17 @@ ul {
 }
 
 .btn {
-    color: $white;
-    font-size: $paragraphs-font-size;
+    padding: 7px 20px;
 
-    border: none;
-    background: none;
+    color: $third-additional-color;
+    font-size: 17px;
+    font-weight: 700;
+
+    background-color: $white;
     cursor: pointer;
-    border-bottom: 2px solid $white;
-    transition-duration: 200ms;
+    border: none;
+    border-radius: 20px;
+    transition-duration: 300ms;
 }
 
 .btn:hover {
