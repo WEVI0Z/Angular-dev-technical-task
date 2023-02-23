@@ -4,7 +4,7 @@ import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
-    CardComponent
+    CardComponent,
   ],
   imports: [
     CommonModule
