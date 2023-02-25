@@ -28,10 +28,9 @@ export class InMemoryDataService implements InMemoryDbService {
     return "srgrlgkjrsljgwkfwgwrgf";
   }
 
-  genExpDate(): Date {
-    const date = new Date();
+  genExpDate(): number {
+    let date = new Date();
     date.setHours(date.getHours() + 1);
-
-    return date;
+    return date.getTime();
   }
 }

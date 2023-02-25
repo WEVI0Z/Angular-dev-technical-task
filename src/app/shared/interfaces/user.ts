@@ -1,7 +1,7 @@
 export interface User {
-    id?: number,
+    id: number,
     login: string,
     password: string,
     token?: string,
-    expDate?: Date
+    expDate?: number
 }

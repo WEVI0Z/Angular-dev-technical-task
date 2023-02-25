@@ -16,9 +16,10 @@ export class LoginComponent {
   ngOnInit() {
     let user!: User;
 
-    this.auth.login({
-      login: "123",
-      password: "123"
-    }).subscribe(data => console.log(data))
+    this.auth.login("123", "123").subscribe(data => console.log(data))
+  }
+
+  doSome() {
+    console.log(this.auth.token)
   }
 }
