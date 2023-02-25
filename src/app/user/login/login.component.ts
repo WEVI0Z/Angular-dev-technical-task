@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/shared/auth.service';
 import { User } from 'src/app/shared/interfaces/user';
 
@@ -8,17 +9,21 @@ import { User } from 'src/app/shared/interfaces/user';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  form!: FormGroup;
+
   constructor (
     private auth: AuthService
   ) {}
 
   ngOnInit() {
-    let user!: User;
-
-    this.auth.login("123", "123").subscribe(data => console.log(data))
+    this.form = new FormGroup({
+      login: new FormControl(null),
+      password: new FormControl(null)
+    })
   }
 
-  doSome() {
-    console.log(this.auth.token)
+  submit() {
+    this.auth.login(this.form.value["login"], this.form.value["password"])
+      .subscribe()
   }
 }

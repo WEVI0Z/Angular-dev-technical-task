@@ -1,15 +1,14 @@
-<form action="" class="login-form form">
+<form action="" class="login-form form" [formGroup]="form" (ngSubmit)="submit()">
     <label for="login" class="form__label">
         Логин:
-        <input type="text" name="login" class="form__input" id="login">
+        <input type="text" formControlName="login" class="form__input" id="login">
     </label>
 
     <label for="password" class="form__label">
         Пароль:
-        <input type="password" name="password" class="form__input" id="password">
+        <input type="password" formControlName="password" class="form__input" id="password">
     </label>
 
 
     <button class="form__submit btn" type="submit">Войти</button>
 </form>
-<button class="form__submit btn" (click)="doSome()">Test</button>
