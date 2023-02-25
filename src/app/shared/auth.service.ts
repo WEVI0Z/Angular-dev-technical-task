@@ -11,21 +11,19 @@ export class AuthService {
     private http: HttpClient,
   ) { }
 
-  get token() {
-    if(this.user?.expDate) {
+  get token(): string {
+    if(this.user?.expDate && this.user.token) {
       const expDate = new Date(this.user?.expDate);
       const now = new Date();
 
-      console.log(expDate, now)
-
       if (now <= expDate) {
-        return this.user!.token;
+        return this.user.token;
       }
     }
 
     this.user = undefined;
 
-    return null;
+    return "";
   }
   
   login(login: string, password: string): Observable<User> {
