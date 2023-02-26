@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { User } from './interfaces/user';
 import { USERS } from './mock-users';
+import { Product } from './interfaces/product';
+import { PRODUCTS } from './mock-products';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { USERS } from './mock-users';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const users: User[] = USERS;
+    const products: Product[] = PRODUCTS;
 
     users.map(user => {
       user.token = this.genToken()
@@ -16,7 +19,8 @@ export class InMemoryDataService implements InMemoryDbService {
     })
 
     return {
-      users
+      users,
+      products
     };
   }
 
