@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 interface Navigation {
   name: string,
   link: string,
-  canActivateByUser: boolean,
 }
 
 @Component({
@@ -24,10 +23,10 @@ export class AppComponent implements OnInit {
   
   ngOnInit() {
     this.navigationList = [
-      {name: "Вход", link: "/user/login", canActivateByUser: false},
-      {name: "Регистрация", link: "/user/register", canActivateByUser: false},
-      {name: "Товары", link: "/product/list", canActivateByUser: true},
-      {name: "Корзина", link: "/goods/list", canActivateByUser: true}
+      {name: "Вход", link: "/user/login"},
+      {name: "Регистрация", link: "/user/register"},
+      {name: "Товары", link: "/product/list"},
+      {name: "Корзина", link: "/goods/list"}
     ];
   }
 

@@ -5,7 +5,7 @@
 
             <ul class="header__links">
                 <ng-container *ngFor="let navigation of navigationList">
-                    <li class="header__item" *ngIf="navigation.canActivateByUser && this.auth.user || !navigation.canActivateByUser && !this.auth.user">
+                    <li class="header__item">
                         <a [routerLink]="navigation.link" class="header__link">
                             {{navigation.name}}
                         </a>
