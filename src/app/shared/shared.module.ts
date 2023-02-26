@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
 import { AuthService } from './auth.service';
+// import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
-    CardComponent
+    CardComponent,
+    // InfoComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    CardComponent
+    CardComponent,
+    // InfoComponent
   ],
   providers: [
     AuthService

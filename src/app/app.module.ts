@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -10,6 +10,7 @@ import { ProductModule } from './product/product.module';
 import { InMemoryDataService } from './shared/in-memory-data.service';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,13 @@ import { UserModule } from './user/user.module';
       InMemoryDataService, {dataEncapsulation: false}
     ),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

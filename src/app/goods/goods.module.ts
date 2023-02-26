@@ -17,12 +17,5 @@ import { AuthInterceptor } from '../shared/interceptors/auth.interceptor';
     CommonModule,
     GoodsRoutingModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
-  ]
 })
 export class GoodsModule { }

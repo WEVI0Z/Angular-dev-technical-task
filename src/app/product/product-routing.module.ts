@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InfoComponent } from '../shared/info/info.component';
 import { ListComponent } from './list/list.component';
-import { AuthGuard } from '../shared/guards/auth.guard';
+import { InfoComponent } from '../shared/info/info.component';
 
 const routes: Routes = [
     {
-      path: "product/info",
+      path: "product/info/:id",
       component: InfoComponent,
     },
     {
