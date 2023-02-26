@@ -1,11 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, UnsubscriptionError, map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { User } from './interfaces/user';
 
 @Injectable()
 export class AuthService {
   user: User | undefined = undefined;
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http: HttpClient,
@@ -33,4 +37,7 @@ export class AuthService {
       );
   }
   
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>("api/users", user, this.httpOptions);
+  }
 }
