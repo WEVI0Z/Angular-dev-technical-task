@@ -29,7 +29,7 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   genToken(): string {
-    return "srgrlgkjrsljgwkfwgwrgf";
+    return "example standart token";
   }
 
   genExpDate(): number {
