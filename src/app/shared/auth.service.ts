@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { User } from './interfaces/user';
 
 @Injectable()
@@ -33,11 +33,21 @@ export class AuthService {
   login(login: string, password: string): Observable<User> {
     return this.http.get<User[]>("api/users").
       pipe(
+        tap((data) => console.log(data)),
         map(data => this.user = data.filter(item => item.login === login && item.password === password)[0]),
       );
   }
   
   createUser(user: User): Observable<User> {
-    return this.http.post<User>("api/users", user, this.httpOptions);
+    return this.http.post<User>("api/users", user, this.httpOptions).pipe(
+      tap(user => {
+        user.token = "gfregsregreg";
+        user.expDate = 1677396567565;
+      })
+    )
+  }
+
+  logout(): void {
+    this.user = undefined;
   }
 }

@@ -5,12 +5,17 @@
 
             <ul class="header__links">
                 <ng-container *ngFor="let navigation of navigationList">
-                    <li class="header__item" *ngIf="navigation.canActivate">
+                    <li class="header__item" *ngIf="navigation.canActivateByUser && this.auth.user || !navigation.canActivateByUser && !this.auth.user">
                         <a [routerLink]="navigation.link" class="header__link">
                             {{navigation.name}}
                         </a>
                     </li>
                 </ng-container>
+                <li class="header__item" *ngIf="this.auth.user">
+                    <a (click)="logout()" style="cursor: pointer;" class="header__link">
+                        Выйти
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>

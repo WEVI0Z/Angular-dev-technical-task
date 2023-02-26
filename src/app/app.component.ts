@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 interface Navigation {
   name: string,
   link: string,
-  canActivate: boolean,
+  canActivateByUser: boolean,
 }
 
 @Component({
@@ -19,15 +19,19 @@ export class AppComponent implements OnInit {
   navigationList: Navigation[] = [];
 
   constructor(
-    private auth: AuthService,
+    protected auth: AuthService,
   ) {}
   
   ngOnInit() {
     this.navigationList = [
-      {name: "Вход", link: "/user/login", canActivate: !this.auth.token},
-      {name: "Регистрация", link: "/user/register", canActivate: !this.auth.token},
-      {name: "Товары", link: "/product/list", canActivate: !this.auth.token},
-      {name: "Корзина", link: "/goods/list", canActivate: !this.auth.token}
+      {name: "Вход", link: "/user/login", canActivateByUser: false},
+      {name: "Регистрация", link: "/user/register", canActivateByUser: false},
+      {name: "Товары", link: "/product/list", canActivateByUser: true},
+      {name: "Корзина", link: "/goods/list", canActivateByUser: true}
     ];
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

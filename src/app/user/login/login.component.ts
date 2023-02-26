@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 import { User } from 'src/app/shared/interfaces/user';
 
@@ -12,7 +13,8 @@ export class LoginComponent {
   form!: FormGroup;
 
   constructor (
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -24,6 +26,14 @@ export class LoginComponent {
 
   submit() {
     this.auth.login(this.form.value["login"], this.form.value["password"])
-      .subscribe()
+      .subscribe(user => {
+        if(user) {
+          this.router.navigate(["product/list"])
+        } else {
+          this.router.navigate(["user/login"], {
+            queryParams: {error: true}
+          })
+        }
+      })
   }
 }
