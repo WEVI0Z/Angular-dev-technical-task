@@ -1,4 +1,4 @@
 <div class="wrapper">
-    <app-card *ngFor="let product of products" [product]="product">
+    <app-card *ngFor="let product of products$ | async" [product]="product">
     </app-card>
 </div>

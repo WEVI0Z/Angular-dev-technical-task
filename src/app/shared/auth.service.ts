@@ -44,7 +44,8 @@ export class AuthService {
     return this.http.post<User>("api/users", user, this.httpOptions).pipe(
       tap(user => {
         user.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTE2MjM5MDIyfQ.Cy9JG4I1j75HLKT-XXE2ItZB1YlOzxfZlP14tGh9Dg0";
-        user.expDate = 1677396567565;
+        user.expDate = this.genExpDate();
+        this.user = user;
       })
     )
   }
@@ -66,5 +67,11 @@ export class AuthService {
 
   removeFromCart(id: number): Observable<UserProduct> {
     return this.http.delete<UserProduct>("api/userProduct/" + id)
+  }
+
+  genExpDate(): number {
+    let date = new Date();
+    date.setHours(date.getHours() + 1);
+    return date.getTime();
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces/product';
 import { ProductService } from 'src/app/shared/product.service';
 
@@ -8,7 +9,7 @@ import { ProductService } from 'src/app/shared/product.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  products: Product[] = []
+  products$!: Observable<Product[]>
   
   constructor(
     private productService: ProductService,
@@ -19,8 +20,6 @@ export class ListComponent {
   }
 
   getCards() {
-    this.productService.getProducts().subscribe(data => {
-      this.products = data;
-    });
+    this.products$ = this.productService.getProducts();
   }
 }

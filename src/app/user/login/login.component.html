@@ -1,4 +1,8 @@
 <form action="" class="login-form form" [formGroup]="form" (ngSubmit)="submit()">
+    <p class="error" *ngIf="error">
+        Неправильный логин или пароль
+    </p>
+
     <label for="login" class="form__label">
         Логин:
         <input type="text" formControlName="login" class="form__input" id="login">

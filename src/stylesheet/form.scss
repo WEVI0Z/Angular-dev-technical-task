@@ -54,4 +54,15 @@
     &__submit:hover {
         opacity: 0.5;
     }
+
+    &__error {
+        margin: 0;
+        padding: 10px;
+    
+        color:rgb(255, 2, 2);
+    }
+}
+
+button:disabled {
+    opacity: 0.5;
 }

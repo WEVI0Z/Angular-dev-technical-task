@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges, ViewEnc
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthService } from './shared/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { User } from './shared/interfaces/user';
 
 interface Navigation {
   name: string,

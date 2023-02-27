@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
-import { User } from 'src/app/shared/interfaces/user';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +11,12 @@ import { User } from 'src/app/shared/interfaces/user';
 })
 export class LoginComponent {
   form!: FormGroup;
+  error: boolean = false;
 
   constructor (
     private auth: AuthService,
     private router: Router,
+    protected route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -22,6 +24,8 @@ export class LoginComponent {
       login: new FormControl(null),
       password: new FormControl(null)
     })
+
+    this.route.queryParams.subscribe(data => this.error = data["error"]);
   }
 
   submit() {
