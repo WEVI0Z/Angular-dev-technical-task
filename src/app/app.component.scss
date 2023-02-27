@@ -3,6 +3,7 @@
 .header {
     display: flex;
     width: 100%;
+    box-sizing: border-box;
     padding: 20px;
 
     border-bottom-left-radius: 20px;
@@ -37,4 +38,8 @@
     &__link:hover {
         opacity: 0.5;
     }
+}
+
+router-outlet {
+    width: 1000%;
 }

@@ -11,19 +11,17 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     private auth: AuthService,
   ) {}
 
-  authCheck = !!this.auth.user?.token;
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authCheck
+    return !!this.auth.token;
   }
   
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    return this.authCheck
+    return !!this.auth.token;
   }
 }

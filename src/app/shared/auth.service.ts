@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
 import { User } from './interfaces/user';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -13,6 +14,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
   ) { }
 
   get token(): string {
@@ -33,7 +35,6 @@ export class AuthService {
   login(login: string, password: string): Observable<User> {
     return this.http.get<User[]>("api/users").
       pipe(
-        tap((data) => console.log(data)),
         map(data => this.user = data.filter(item => item.login === login && item.password === password)[0]),
       );
   }
@@ -41,7 +42,7 @@ export class AuthService {
   createUser(user: User): Observable<User> {
     return this.http.post<User>("api/users", user, this.httpOptions).pipe(
       tap(user => {
-        user.token = "gfregsregreg";
+        user.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTE2MjM5MDIyfQ.Cy9JG4I1j75HLKT-XXE2ItZB1YlOzxfZlP14tGh9Dg0";
         user.expDate = 1677396567565;
       })
     )
@@ -49,5 +50,6 @@ export class AuthService {
 
   logout(): void {
     this.user = undefined;
+    this.router.navigate(["product/list"]);
   }
 }
