@@ -6,9 +6,10 @@ import { Product } from './interfaces/product';
 import { PRODUCTS } from './mock-products';
 import { USER_PRODUCT } from './mock-user-product';
 import { UserProduct } from './interfaces/user-product';
-import { HttpHandler, HttpParams, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpParams, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { provideRouter } from '@angular/router';
+import { BackendService } from 'angular-in-memory-web-api';
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +32,16 @@ export class InMemoryDataService implements InMemoryDbService {
     };
   }
 
-  get(reqInfo: RequestInfo) {
+  get(reqInfo: RequestInfo, db: {}) {
     const url = reqInfo.url;
-    const reqMethod = reqInfo.method;
     const reqParams = reqInfo.query;
 
-    if(url.includes("userProduct") && reqMethod === "get" && reqParams.get("user_id")) {
+    if (url.includes("userProducts") && reqParams.get("user_id")) {
       return this.getProductsByUserId(+reqParams.get("user_id")![0]);
+    } else if (url.includes("cartCheck") && reqParams.get("user_id") && reqParams.get("product_id")) {
+      return this.checkIfInCart(+reqParams.get("product_id")![0], +reqParams.get("user_id")![0]);
     }
+
     return undefined;
   }
 
@@ -57,6 +60,16 @@ export class InMemoryDataService implements InMemoryDbService {
     products = database.products.filter(data => targetIds.indexOf(data.id!) !== -1);
     
     const response = new HttpResponse({status: 200, body: products});
+
+    return new Observable(subscriber => subscriber.next(response));
+  }
+
+  checkIfInCart(productId: number, userId: number) {
+    const database = this.createDb()
+
+    const check: boolean = database.userProduct.filter(data => data.product_id === productId && data.user_id === userId).length !== 0 ? true : false;
+
+    const response = new HttpResponse({status: 200, body: check});
 
     return new Observable(subscriber => subscriber.next(response));
   }

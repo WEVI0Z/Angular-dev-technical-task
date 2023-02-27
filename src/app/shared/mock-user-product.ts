@@ -17,7 +17,6 @@ export const USER_PRODUCT: UserProduct[] = [
     { id: 14, user_id: 1, product_id: 3 },
     { id: 15, user_id: 2, product_id: 2 },
     { id: 16, user_id: 1, product_id: 1 },
-    { id: 17, user_id: 3, product_id: 6 },
     { id: 18, user_id: 1, product_id: 4 },
     { id: 19, user_id: 3, product_id: 3 },
     { id: 20, user_id: 2, product_id: 5 },

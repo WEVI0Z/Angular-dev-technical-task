@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
 import { User } from './interfaces/user';
 import { Router } from '@angular/router';
+import { UserProduct } from './interfaces/user-product';
 
 @Injectable()
 export class AuthService {
@@ -51,5 +52,19 @@ export class AuthService {
   logout(): void {
     this.user = undefined;
     this.router.navigate(["product/list"]);
+  }
+
+  addProductToCart(user_id: number, product_id: number): Observable<UserProduct> {
+    const userProduct = {user_id, product_id};
+
+    return this.http.post<UserProduct>("api/userProduct", userProduct, this.httpOptions);
+  }
+
+  findUserProductId(user_id: number, product_id: number): Observable<UserProduct[]> {
+    return this.http.get<UserProduct[]>("api/userProduct", {params: {user_id, product_id}});
+  }
+
+  removeFromCart(id: number): Observable<UserProduct> {
+    return this.http.delete<UserProduct>("api/userProduct/" + id)
   }
 }

@@ -30,9 +30,6 @@ export class RegisterComponent {
       password: this.form.value["password"]
     };
 
-    console.log(this.user);
-
-    this.auth.createUser(this.user)
-      .subscribe(user => console.log(user));
+    this.auth.createUser(this.user).subscribe();
   }
 }

@@ -31,4 +31,20 @@
     &__price {
         margin-top: 0;
     }
+
+    &__cart-btn {
+        margin-bottom: 20px;
+
+        color: $white;
+        
+        background-color: red;
+    }
+    
+    &__cart-btn--removed {
+        margin-bottom: 20px;
+
+        color: $white;
+        
+        background-color: darkorange;
+    }
 }

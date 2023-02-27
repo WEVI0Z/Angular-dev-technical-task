@@ -2,5 +2,13 @@
     <img src="{{product.photo}}" alt="card-image" class="card__image">
     <h3 class="card__name">{{product.name}}</h3>
     <p class="card__price">{{product.price}}$</p>
-    <ng-content></ng-content>
+
+    <ng-container *ngIf="this.authService.user">
+        <a class="btn card__cart-btn" (click)="removeFromCart()" *ngIf="cardCondition; else removed">Убрать из корзины</a>
+        <ng-template #removed>
+            <a class="btn card__cart-btn card__cart-btn--removed" (click)="addToCart()">Добавить в корзину</a>        
+        </ng-template>
+    </ng-container>
+    
+    <a class="btn card__btn" [routerLink]="['/product/info', product.id]">Перейти</a>
 </div>

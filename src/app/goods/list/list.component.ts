@@ -29,7 +29,7 @@ export class ListComponent implements OnInit{
   }
 
   getProducts() {
-    this.productService.getProductsOfUserById(1).subscribe(data => {
+    this.productService.getProductsOfUserById(this.authService.user?.id!).subscribe(data => {
       this.products = data;
     })
   }

@@ -23,6 +23,10 @@ export class ProductService {
   }
 
   getProductsOfUserById(user_id: number): Observable<Product[]> {
-    return this.http.get<Product[]>("api/userProduct", {params: {user_id}})
+    return this.http.get<Product[]>("api/userProducts", {params: {user_id}})
+  }
+
+  checkIfInCart(product_id: number, user_id: number): Observable<boolean> {
+    return this.http.get<boolean>("api/cartCheck", {params: {product_id, user_id}})
   }
 }
