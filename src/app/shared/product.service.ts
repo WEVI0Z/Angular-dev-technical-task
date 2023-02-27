@@ -21,4 +21,8 @@ export class ProductService {
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>("api/products", product)
   }
+
+  getProductsOfUserById(user_id: number): Observable<Product[]> {
+    return this.http.get<Product[]>("api/userProduct", {params: {user_id}})
+  }
 }

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { User } from './interfaces/user';
 import { USERS } from './mock-users';
 import { Product } from './interfaces/product';
 import { PRODUCTS } from './mock-products';
 import { USER_PRODUCT } from './mock-user-product';
 import { UserProduct } from './interfaces/user-product';
-import { HttpResponse } from '@angular/common/http';
+import { HttpHandler, HttpParams, HttpRequest, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { provideRouter } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -29,14 +31,34 @@ export class InMemoryDataService implements InMemoryDbService {
     };
   }
 
-  getByUserId(reqInfo: any) {
-    const user_id = reqInfo.query.get('user_id');
-    console.log(user_id);
-    const products = this.createDb().userProduct.filter((element) => element.user_id === user_id);
-    return reqInfo.utils.createResponse$(() => ({
-      body: { products },
-      status: 200,
-    }));
+  get(reqInfo: RequestInfo) {
+    const url = reqInfo.url;
+    const reqMethod = reqInfo.method;
+    const reqParams = reqInfo.query;
+
+    if(url.includes("userProduct") && reqMethod === "get" && reqParams.get("user_id")) {
+      return this.getProductsByUserId(+reqParams.get("user_id")![0]);
+    }
+    return undefined;
+  }
+
+  getProductsByUserId(userId: number) {
+    let products: Product[] = [];
+    const targetIds: number[] = [];
+
+    const database = this.createDb() 
+
+    database.userProduct.map(data => {
+      if(data.user_id === userId) { 
+        targetIds.push(data.product_id);
+      }
+    });
+
+    products = database.products.filter(data => targetIds.indexOf(data.id!) !== -1);
+    
+    const response = new HttpResponse({status: 200, body: products});
+
+    return new Observable(subscriber => subscriber.next(response));
   }
 
   genId(users: User[]): number {

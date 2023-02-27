@@ -1,5 +1,6 @@
 <div class="wrapper">
-    <app-card *ngFor="let product of products" [product]="product">
+    <!-- <app-card *ngFor="let product of products" [product]="product">
         <a class="btn card__btn" [routerLink]="['/product/info', product.id]">Перейти</a>
-    </app-card>
+    </app-card> -->
+    <div *ngFor="let product of products"></div>
 </div>

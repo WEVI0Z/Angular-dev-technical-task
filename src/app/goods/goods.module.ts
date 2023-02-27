@@ -5,8 +5,7 @@ import { AddComponent } from './add/add.component';
 import { GoodsRoutingModule } from './goods-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../shared/interceptors/auth.interceptor';
-
-
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +14,7 @@ import { AuthInterceptor } from '../shared/interceptors/auth.interceptor';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     GoodsRoutingModule
   ],
 })

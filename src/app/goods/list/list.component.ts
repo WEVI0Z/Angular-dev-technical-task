@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/auth.service';
 import { Product } from 'src/app/shared/interfaces/product';
-import { UserProductService } from 'src/app/shared/user-product.service';
+import { ProductService } from 'src/app/shared/product.service';
 
 @Component({
   selector: 'app-list',
@@ -8,10 +9,19 @@ import { UserProductService } from 'src/app/shared/user-product.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit{
-  products: Product[] = [];
+  products: Product[] = [
+    {
+      id: 0,
+      name: "loading",
+      description: "loading",
+      photo: "",
+      price: 0
+    }
+  ];
 
   constructor(
-    private userProductService: UserProductService,
+    private authService: AuthService,
+    private productService: ProductService,
   ) {}
   
   ngOnInit(): void {
@@ -19,9 +29,8 @@ export class ListComponent implements OnInit{
   }
 
   getProducts() {
-    this.userProductService.getProductsOfUserById(1).subscribe(data => {
+    this.productService.getProductsOfUserById(1).subscribe(data => {
       this.products = data;
-      console.log(data);
     })
   }
 }
