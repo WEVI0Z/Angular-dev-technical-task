@@ -5,6 +5,7 @@ import { ProductService } from '../services/product.service';
 import { Store } from '@ngrx/store';
 import { UserState } from 'src/app/store/user/reducer';
 import { addProductToCart, removeProductFromCart } from 'src/app/store/user/actions';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-card',
@@ -13,34 +14,41 @@ import { addProductToCart, removeProductFromCart } from 'src/app/store/user/acti
 })
 export class CardComponent {
   @Input() product!: Product;
+  user!: User;
 
   cardCondition: boolean = false;
 
   constructor(
     protected authService: AuthService,
     private productService: ProductService,
-    private store: Store<{user: UserState}>
+    private productStore: Store<{products: Product[]}>,
+    private userStore: Store<{user: UserState}>,
   ) {}
 
   ngOnInit(): void {
     this.checkIfInCart();
+    this.userStore.select("user").subscribe(data =>
+      this.user = data.user!  
+    );
   }
 
   checkIfInCart() {
-    this.productService.checkIfInCart(this.product.id!, this.authService.user?.id!).subscribe(check => {
-      this.cardCondition = check;
+    this.userStore.select("user").subscribe(user => {
+      const userProducts = user.userProducts.map(item => item.product_id);
+
+      this.cardCondition = userProducts.findIndex(item => item === this.product.id!) !== -1;
     })
   }
 
   addToCart() {
     this.cardCondition = true;
 
-    this.store.dispatch(addProductToCart({user_id: this.authService.user?.id!, product_id: this.product.id!}))
+    this.userStore.dispatch(addProductToCart({user_id: this.authService.user?.id!, product_id: this.product.id!}))
   }
 
   removeFromCart() {
     this.cardCondition = false;
 
-    this.store.dispatch(removeProductFromCart({user_id: this.authService.user?.id!, product_id: this.product.id!}))
+    this.userStore.dispatch(removeProductFromCart({user_id: this.authService.user?.id!, product_id: this.product.id!}))
     }
 }

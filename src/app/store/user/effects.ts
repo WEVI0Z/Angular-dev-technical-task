@@ -62,7 +62,7 @@ export class UserEffects {
       ofType(actions.removeProductFromCart),
       mergeMap(data =>
         this.auth.removeFromCart(data.user_id, data.product_id).pipe(
-          map(data => actions.removeProductFromCartSuccess(data))
+          map(data => actions.removeProductFromCartSuccess({id: data.id}))
         )
         )
       )

@@ -18,37 +18,4 @@ export class ProductEffects {
       )
     )
   )
-
-  getProduct$ = createEffect(() => 
-    this.actions$.pipe(
-      ofType(actions.getProduct),
-      mergeMap(data => 
-        this.product.getProduct(data.id).pipe(
-          map(() => actions.getProductSuccess())
-        )
-      )
-    )
-  )
-  
-  getProductsOfUserById$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(actions.getProductsOfUserById),
-      mergeMap(data =>
-        this.product.getProductsOfUserById(data.user_id).pipe(
-          map(products => actions.getProductsOfUserByIdSuccess({products}))
-        )  
-      )
-    )
-  )
-
-  checkIfInCart$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(actions.checkIfInCart),
-      mergeMap(data =>
-        this.product.checkIfInCart(data.product_id, data.user_id).pipe(
-          map(bool => actions.checkIfInCartSuccess({bool}))
-        )
-      )
-    )
-  )
 }

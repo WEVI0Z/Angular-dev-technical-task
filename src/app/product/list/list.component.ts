@@ -14,7 +14,6 @@ export class ListComponent {
   products$: Observable<Product[]> = this.store.select("products");
   
   constructor(
-    private productService: ProductService,
     private store: Store<{products: Product[]}>
   ) {}
 

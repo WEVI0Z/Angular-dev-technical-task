@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, mergeMap, tap } from 'rxjs';
+import { Observable, map, mergeMap, subscribeOn, tap } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
 import { UserProduct } from '../interfaces/user-product';
@@ -74,7 +74,9 @@ export class AuthService {
   removeFromCart(user_id: number, product_id: number): Observable<UserProduct> {
     return this.findUserProductId(user_id, product_id).pipe(
       mergeMap(userProduct => {
-        return this.http.delete<UserProduct>("api/userProduct/" + userProduct.id)
+        this.http.delete<UserProduct>("api/userProduct/" + userProduct.id);
+
+        return new Observable<UserProduct>(subsciber => subsciber.next(userProduct));
       })
     )
   }
