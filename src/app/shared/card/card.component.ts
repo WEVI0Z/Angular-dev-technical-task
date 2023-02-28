@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../interfaces/product';
-import { AuthService } from '../auth.service';
-import { ProductService } from '../product.service';
+import { AuthService } from '../services/auth.service';
+import { ProductService } from '../services/product.service';
 import { Store } from '@ngrx/store';
 import { UserState } from 'src/app/store/user/reducer';
 import { addProductToCart, removeProductFromCart } from 'src/app/store/user/actions';

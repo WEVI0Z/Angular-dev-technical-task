@@ -1,4 +1,4 @@
-import { UserProduct } from "./interfaces/user-product";
+import { UserProduct } from "../interfaces/user-product";
 
 export const USER_PRODUCT: UserProduct[] = [
     { id: 1, user_id: 2, product_id: 4 },

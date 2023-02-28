@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from '../interfaces/product';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 
 const TEMP_PRODUCT: Product = {
   name: "Loading...",

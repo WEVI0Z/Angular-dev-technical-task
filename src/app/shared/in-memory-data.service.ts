@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { User } from './interfaces/user';
-import { USERS } from './mock-users';
+import { USERS } from './mock/mock-users';
 import { Product } from './interfaces/product';
-import { PRODUCTS } from './mock-products';
-import { USER_PRODUCT } from './mock-user-product';
+import { PRODUCTS } from './mock/mock-products';
+import { USER_PRODUCT } from './mock/mock-user-product';
 import { UserProduct } from './interfaces/user-product';
 import { HttpClient, HttpHandler, HttpParams, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';

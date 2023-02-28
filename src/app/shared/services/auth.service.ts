@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, mergeMap, tap } from 'rxjs';
-import { User } from './interfaces/user';
+import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
-import { UserProduct } from './interfaces/user-product';
+import { UserProduct } from '../interfaces/user-product';
 
 @Injectable()
 export class AuthService {

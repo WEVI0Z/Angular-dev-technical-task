@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces/product';
-import { ProductService } from 'src/app/shared/product.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-list',

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { AuthGuard } from './shared/guards/auth.guard';
-import { AuthService } from './shared/auth.service';
+import { AuthService } from './shared/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from './shared/interfaces/user';
 import { Store } from '@ngrx/store';

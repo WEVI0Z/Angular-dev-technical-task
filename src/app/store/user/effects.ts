@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/shared/auth.service';
 
 @Injectable()
 export class UserEffects {
+  constructor(private actions$: Actions, private auth: AuthService) {}
+  
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.login),
@@ -65,6 +67,4 @@ export class UserEffects {
         )
       )
     );
-
-  constructor(private actions$: Actions, private auth: AuthService) {}
 }
