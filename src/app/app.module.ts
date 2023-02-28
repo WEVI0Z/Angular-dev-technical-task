@@ -11,6 +11,10 @@ import { InMemoryDataService } from './shared/in-memory-data.service';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './store/user/reducer';
+import { UserEffects } from './store/user/effects';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,9 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
     ),
+    StoreModule.forRoot({user: userReducer}),
+    EffectsModule.forRoot([UserEffects]),
+
   ],
   providers: [
     {

@@ -12,7 +12,7 @@
                     </li>
                 </ng-container>
                 <li class="header__item">
-                    <a (click)="logout()" style="cursor: pointer;" class="header__link">
+                    <a (click)="logout()" style="cursor: pointer;" *ngIf="this.auth.user" class="header__link">
                         Выйти
                     </a>
                 </li>

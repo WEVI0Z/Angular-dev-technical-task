@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
-import { Observable, map } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { UserState } from 'src/app/store/user/reducer';
+import { login } from 'src/app/store/user/actions';
+import { User } from 'src/app/shared/interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +19,8 @@ export class LoginComponent {
   constructor (
     private auth: AuthService,
     private router: Router,
-    protected route: ActivatedRoute
+    protected route: ActivatedRoute,
+    private store: Store<{user: UserState}>
   ) {}
 
   ngOnInit() {
@@ -26,18 +30,23 @@ export class LoginComponent {
     })
 
     this.route.queryParams.subscribe(data => this.error = data["error"]);
+
+  }
+
+  ngAfterViewChecked() {
+    this.store.select("user").subscribe(user => {
+      if(user.user) {
+        this.router.navigate(["product/list"])
+      }
+    })
   }
 
   submit() {
-    this.auth.login(this.form.value["login"], this.form.value["password"])
-      .subscribe(user => {
-        if(user) {
-          this.router.navigate(["product/list"])
-        } else {
-          this.router.navigate(["user/login"], {
-            queryParams: {error: true}
-          })
-        }
-      })
+    const user: User = {
+      login: this.form.value["login"],
+      password: this.form.value["password"]
+    }
+
+    this.store.dispatch(login(user));
   }
 }

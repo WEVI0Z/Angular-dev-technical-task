@@ -3,6 +3,9 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthService } from './shared/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from './shared/interfaces/user';
+import { Store } from '@ngrx/store';
+import { UserState } from './store/user/reducer';
+import { login, logout } from './store/user/actions';
 
 interface Navigation {
   name: string,
@@ -20,6 +23,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     protected auth: AuthService,
+    private store: Store<{user: UserState}>
   ) {}
   
   ngOnInit() {
@@ -32,6 +36,6 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout();
+    this.store.dispatch(logout())
   }
 }

@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../interfaces/product';
 import { AuthService } from '../auth.service';
 import { ProductService } from '../product.service';
+import { Store } from '@ngrx/store';
+import { UserState } from 'src/app/store/user/reducer';
+import { addProductToCart, removeProductFromCart } from 'src/app/store/user/actions';
 
 @Component({
   selector: 'app-card',
@@ -16,6 +19,7 @@ export class CardComponent {
   constructor(
     protected authService: AuthService,
     private productService: ProductService,
+    private store: Store<{user: UserState}>
   ) {}
 
   ngOnInit(): void {
@@ -31,14 +35,12 @@ export class CardComponent {
   addToCart() {
     this.cardCondition = true;
 
-    this.authService.addProductToCart(this.authService.user?.id!, this.product.id!).subscribe();
+    this.store.dispatch(addProductToCart({user_id: this.authService.user?.id!, product_id: this.product.id!}))
   }
 
   removeFromCart() {
     this.cardCondition = false;
 
-    this.authService.findUserProductId(this.authService.user?.id!, this.product.id!).subscribe(data => {
-      this.authService.removeFromCart(data[0].id).subscribe();
-    });
-  }
+    this.store.dispatch(removeProductFromCart({user_id: this.authService.user?.id!, product_id: this.product.id!}))
+    }
 }

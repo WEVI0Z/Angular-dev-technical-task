@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, map, mergeMap, tap } from 'rxjs';
 import { User } from './interfaces/user';
 import { Router } from '@angular/router';
 import { UserProduct } from './interfaces/user-product';
@@ -61,12 +61,22 @@ export class AuthService {
     return this.http.post<UserProduct>("api/userProduct", userProduct, this.httpOptions);
   }
 
-  findUserProductId(user_id: number, product_id: number): Observable<UserProduct[]> {
-    return this.http.get<UserProduct[]>("api/userProduct", {params: {user_id, product_id}});
+  findUserProductId(user_id: number, product_id: number): Observable<UserProduct> {
+    return this.http.get<UserProduct[]>("api/userProduct", {params: {user_id, product_id}}).pipe(
+      map(item => item[0]),
+    );
   }
 
-  removeFromCart(id: number): Observable<UserProduct> {
-    return this.http.delete<UserProduct>("api/userProduct/" + id)
+  findUserProductsById(user_id: number): Observable<UserProduct[]> {
+    return this.http.get<UserProduct[]>("api/userProduct", {params: {user_id}});
+  }
+
+  removeFromCart(user_id: number, product_id: number): Observable<UserProduct> {
+    return this.findUserProductId(user_id, product_id).pipe(
+      mergeMap(userProduct => {
+        return this.http.delete<UserProduct>("api/userProduct/" + userProduct.id)
+      })
+    )
   }
 
   genExpDate(): number {
