@@ -15,6 +15,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './store/user/reducer';
 import { UserEffects } from './store/user/effects';
+import { productReducer } from './store/product/reducer';
+import { ProductEffects } from './store/product/effects';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,8 @@ import { UserEffects } from './store/user/effects';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
     ),
-    StoreModule.forRoot({user: userReducer}),
-    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot({user: userReducer, products: productReducer}),
+    EffectsModule.forRoot([UserEffects, ProductEffects]),
 
   ],
   providers: [

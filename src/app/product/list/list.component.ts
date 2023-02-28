@@ -1,7 +1,9 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces/product';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { getProducts } from 'src/app/store/product/actions';
 
 @Component({
   selector: 'app-list',
@@ -9,10 +11,11 @@ import { ProductService } from 'src/app/shared/services/product.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  products$!: Observable<Product[]>
+  products$: Observable<Product[]> = this.store.select("products");
   
   constructor(
     private productService: ProductService,
+    private store: Store<{products: Product[]}>
   ) {}
 
   ngOnInit() {
@@ -20,6 +23,6 @@ export class ListComponent {
   }
 
   getCards() {
-    this.products$ = this.productService.getProducts();
+    this.store.dispatch(getProducts());
   }
 }

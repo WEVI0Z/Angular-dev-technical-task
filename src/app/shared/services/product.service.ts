@@ -8,7 +8,7 @@ export class ProductService {
 
   constructor(
     private http: HttpClient,
-  ) { }
+  ) {}
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>("api/products")
@@ -16,10 +16,6 @@ export class ProductService {
 
   getProduct(id: number): Observable<Product> {
     return this.http.get<Product>("api/products/" + id)
-  }
-
-  addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>("api/products", product)
   }
 
   getProductsOfUserById(user_id: number): Observable<Product[]> {
