@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { Store } from '@ngrx/store';
 import { UserState } from 'src/app/store/user/reducer';
 import { login } from 'src/app/store/user/actions';
@@ -17,7 +16,6 @@ export class LoginComponent {
   error: boolean = false
 
   constructor (
-    private auth: AuthService,
     private router: Router,
     protected route: ActivatedRoute,
     private store: Store<{user: UserState}>

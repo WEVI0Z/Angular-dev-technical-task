@@ -1,8 +1,6 @@
 import { Component, Input, ViewChild } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Product } from "src/app/shared/interfaces/product";
-import { AuthService } from "src/app/shared/services/auth.service";
-import { ProductService } from "src/app/shared/services/product.service";
 import { UserState } from "src/app/store/user/reducer";
 import { User } from "../interfaces/user";
 import { addProductToCart, removeProductFromCart } from "src/app/store/user/actions";
@@ -28,8 +26,6 @@ export class CardSmartComponent {
     @ViewChild(CardComponent) cardComponent!: CardComponent
   
     constructor(
-      protected authService: AuthService,
-      private productStore: Store<{products: Product[]}>,
       private userStore: Store<{user: UserState}>,
     ) {}
   
@@ -51,12 +47,12 @@ export class CardSmartComponent {
     addToCart() {
       this.cardCondition = true;
 
-      this.userStore.dispatch(addProductToCart({user_id: this.authService.user?.id!, product_id: this.product.id!}))
+      this.userStore.dispatch(addProductToCart({user_id: this.user.id!, product_id: this.product.id!}))
     }
   
     removeFromCart() {
       this.cardCondition = false;
   
-      this.userStore.dispatch(removeProductFromCart({user_id: this.authService.user?.id!, product_id: this.product.id!}))
+      this.userStore.dispatch(removeProductFromCart({user_id: this.user.id!, product_id: this.product.id!}))
     }
 }

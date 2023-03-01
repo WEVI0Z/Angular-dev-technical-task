@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { map, mergeMap } from 'rxjs';
 import { AdditionalValidators } from 'src/app/shared/additional-validators';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/interfaces/user';
 import { createUser } from 'src/app/store/user/actions';
 import { UserState } from 'src/app/store/user/reducer';
@@ -19,7 +17,6 @@ export class RegisterComponent {
   user!: User;
 
   constructor (
-    private auth: AuthService,
     private additionalValidators: AdditionalValidators,
     private router: Router,
     private store: Store<{user: UserState}>
