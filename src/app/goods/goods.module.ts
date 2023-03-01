@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListComponent } from './list/list.component';
 import { GoodsRoutingModule } from './goods-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { listSmartComponent } from './list/list.smart.component';
 
 @NgModule({
   declarations: [
-    ListComponent,
+    listSmartComponent,
   ],
   imports: [
     CommonModule,

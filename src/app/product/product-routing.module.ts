@@ -1,21 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListComponent } from './list/list.component';
 import { InfoComponent } from '../shared/info/info.component';
+import { listSmartComponent } from './list/list.smart.component';
 
 const routes: Routes = [
-    {
-      path: "",
-      redirectTo: "/product/list",
-      pathMatch: "full"
-    },
     {
       path: "product/info/:id",
       component: InfoComponent,
     },
     {
       path: "product/list",
-      component: ListComponent,
+      component: listSmartComponent,
     }
 ];
 

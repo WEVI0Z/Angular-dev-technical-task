@@ -3,10 +3,10 @@
     <h3 class="card__name">{{product.name}}</h3>
     <p class="card__price">{{product.price}}$</p>
 
-    <ng-container *ngIf="this.authService.user">
-        <a class="btn card__cart-btn" (click)="removeFromCart()" *ngIf="cardCondition; else removed">Убрать из корзины</a>
+    <ng-container *ngIf="user">
+        <a class="btn card__cart-btn" (click)="removeFromCart.emit()" *ngIf="cardCondition; else removed">Убрать из корзины</a>
         <ng-template #removed>
-            <a class="btn card__cart-btn card__cart-btn--removed" (click)="addToCart()">Добавить в корзину</a>        
+            <a class="btn card__cart-btn card__cart-btn--removed" (click)="addToCart.emit()">Добавить в корзину</a>        
         </ng-template>
     </ng-container>
     

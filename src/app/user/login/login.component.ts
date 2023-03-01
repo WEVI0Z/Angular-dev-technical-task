@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -14,7 +14,7 @@ import { User } from 'src/app/shared/interfaces/user';
 })
 export class LoginComponent {
   form!: FormGroup;
-  error: boolean = false;
+  error: boolean = false
 
   constructor (
     private auth: AuthService,

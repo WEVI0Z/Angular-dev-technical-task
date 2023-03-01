@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListComponent } from './list/list.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { listSmartComponent } from './list/list.smart.component';
 
 const routes: Routes = [
     {
       path: "goods/list",
-      component: ListComponent,
+      component: listSmartComponent,
       canActivate: [AuthGuard],
     }
 ];

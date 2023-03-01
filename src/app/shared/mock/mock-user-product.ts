@@ -4,7 +4,6 @@ export const USER_PRODUCT: UserProduct[] = [
     { id: 1, user_id: 2, product_id: 4 },
     { id: 2, user_id: 1, product_id: 5 },
     { id: 3, user_id: 2, product_id: 1 },
-    { id: 4, user_id: 1, product_id: 5 },
     { id: 5, user_id: 3, product_id: 7 },
     { id: 6, user_id: 2, product_id: 3 },
     { id: 7, user_id: 3, product_id: 2 },
@@ -20,9 +19,5 @@ export const USER_PRODUCT: UserProduct[] = [
     { id: 18, user_id: 1, product_id: 4 },
     { id: 19, user_id: 3, product_id: 3 },
     { id: 20, user_id: 2, product_id: 5 },
-    { id: 21, user_id: 1, product_id: 2 },
-    { id: 22, user_id: 3, product_id: 1 },
-    { id: 23, user_id: 2, product_id: 7 },
-    { id: 24, user_id: 1, product_id: 5 },
     { id: 25, user_id: 3, product_id: 5 },
 ];
