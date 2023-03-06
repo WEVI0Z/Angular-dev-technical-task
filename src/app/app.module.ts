@@ -17,12 +17,14 @@ import { userReducer } from './store/user/reducer';
 import { UserEffects } from './store/user/effects';
 import { productReducer } from './store/product/reducer';
 import { ProductEffects } from './store/product/effects';
+import { HeaderModule } from './header/header.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    HeaderModule,
     BrowserModule,
     AppRoutingModule,
     UserModule,

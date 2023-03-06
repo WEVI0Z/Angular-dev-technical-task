@@ -1,24 +1,5 @@
 <div class="app-container">
-    <header class="header">
-        <nav class="header__nav">
-            <h1 class="header__main-link"><a routerLink="/">Angular technical task</a></h1>
-
-            <ul class="header__links">
-                <ng-container *ngFor="let navigation of navigationList">
-                    <li class="header__item">
-                        <a [routerLink]="navigation.link" class="header__link">
-                            {{navigation.name}}
-                        </a>
-                    </li>
-                </ng-container>
-                <li class="header__item">
-                    <a (click)="logout()" style="cursor: pointer;" *ngIf="this.auth.user" class="header__link">
-                        Выйти
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <app-header-smart [navigationList]="navigationList"></app-header-smart>
     
     <router-outlet></router-outlet>
-</div>
+</div> 

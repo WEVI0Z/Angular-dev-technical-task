@@ -1,0 +1,45 @@
+@import "../../stylesheet/variables.scss";
+
+:host {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: $second-additional-color;
+
+    &__nav{
+        display: flex;
+        width: inherit;
+        justify-content: space-between;
+    }
+    
+    &__main-link a {
+        color: $white;
+    }
+
+    &__main-link a:hover {
+        color: $first-additional-color;
+    }
+
+    &__links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    &__link {
+        margin-left: 20px;
+        color: $white;
+    }
+
+    &__link:hover {
+        opacity: 0.5;
+    }
+}

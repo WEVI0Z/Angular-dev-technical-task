@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { UserState } from './store/user/reducer';
 import { login, logout } from './store/user/actions';
 
-interface Navigation {
+export interface Navigation {
   name: string,
   link: string,
 }
