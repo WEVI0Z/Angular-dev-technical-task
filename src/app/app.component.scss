@@ -40,6 +40,20 @@
     }
 }
 
+.app-container {
+    max-width: 1000px;
+    min-width: $min-width;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    font-family: $font-family;
+    color: #868B8E;
+    font-size: $paragraphs-font-size;
+}
+
 router-outlet {
     width: 1000%;
 }
