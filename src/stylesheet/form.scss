@@ -28,15 +28,15 @@
         border: none;
         border-bottom: 2px solid $white;
         opacity: 0.5;
-    }
 
-    &__input:focus {
-        outline: none;
-        opacity: 1;
-    }
+        &:focus {
+            outline: none;
+            opacity: 1;
+        }
 
-    &__input::placeholder {
-        color: $white;
+        &::placeholder {
+            color: $white;
+        }
     }
 
     &__submit {
@@ -49,10 +49,10 @@
         cursor: pointer;
         border-bottom: 2px solid $white;
         transition-duration: 200ms;
-    }
 
-    &__submit:hover {
-        opacity: 0.5;
+        &:hover {
+            opacity: 0.5;
+        }
     }
 
     &__error {

@@ -21,10 +21,10 @@ a {
     color: $third-additional-color;
     
     transition-duration: 200ms;
-}
 
-a:hover {
-    color: $second-additional-color;
+    &:hover {
+        color: $second-additional-color;
+    }
 }
 
 ul {
@@ -45,8 +45,8 @@ ul {
     border: none;
     border-radius: 20px;
     transition-duration: 300ms;
-}
 
-.btn:hover {
-    opacity: 0.5;
+    &:hover {
+        opacity: 0.5;
+    }
 }

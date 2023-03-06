@@ -22,10 +22,10 @@
     
     &__main-link a {
         color: $white;
-    }
 
-    &__main-link a:hover {
-        color: $first-additional-color;
+        &:hover {
+            color: $first-additional-color;
+        }
     }
 
     &__links {
@@ -37,9 +37,9 @@
     &__link {
         margin-left: 20px;
         color: $white;
-    }
 
-    &__link:hover {
-        opacity: 0.5;
+        &:hover {
+            opacity: 0.5;
+        }
     }
 }
