@@ -1,13 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Navigation } from '../app.component';
-import { User } from '../shared/interfaces/user';
 import { Store } from '@ngrx/store';
 import { childLogout, getUser } from './store/actions';
 import { userChildState } from './store/reducer';
 import { Observable, map } from 'rxjs';
 
 @Component({
-  selector: 'app-header-smart',
+  selector: 'header-smart-component',
   template: `<app-header [navigationList]="navigationList" [logout]="logout" [user]="user"></app-header>`,
   styleUrls: ['./header.component.scss']
 })
