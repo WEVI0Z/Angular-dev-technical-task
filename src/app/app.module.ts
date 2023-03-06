@@ -18,12 +18,14 @@ import { UserEffects } from './store/user/effects';
 import { productReducer } from './store/product/reducer';
 import { ProductEffects } from './store/product/effects';
 import { HeaderModule } from './header/header.module';
+import { AppStoreModule } from './app-store.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    AppStoreModule,
     HeaderModule,
     BrowserModule,
     AppRoutingModule,
@@ -35,9 +37,6 @@ import { HeaderModule } from './header/header.module';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
     ),
-    StoreModule.forRoot({user: userReducer, products: productReducer}),
-    EffectsModule.forRoot([UserEffects, ProductEffects]),
-
   ],
   providers: [
     {
