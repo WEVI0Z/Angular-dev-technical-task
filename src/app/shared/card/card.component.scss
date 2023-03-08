@@ -34,17 +34,13 @@
 
     &__cart-btn {
         margin-bottom: 20px;
-
         color: $white;
-        
         background-color: red;
-    }
-    
-    &__cart-btn--removed {
-        margin-bottom: 20px;
 
-        color: $white;
-        
-        background-color: darkorange;
+        &--removed {
+            margin-bottom: 20px;
+            color: $white;
+            background-color: darkorange;
+        }
     }
 }
