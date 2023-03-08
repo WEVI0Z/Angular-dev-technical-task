@@ -5,32 +5,32 @@ import { AuthService } from "src/app/shared/services/auth.service";
 import { ProductService } from "src/app/shared/services/product.service";
 import { getProducts } from "src/app/store/product/actions";
 import { UserState } from "src/app/store/user/reducer";
+import { clearData, getGoods } from "../store/actions";
 
 @Component({
     selector: "list-smart-component",
     template: '<app-list [products]="products"></app-list>'
 })
-export class listSmartComponent {
+export class ListSmartComponent {
     products: Product[] = []
 
     constructor(
-        private productStore: Store<{products: Product[]}>,
-        private userStore: Store<{user: UserState}>,
+        private store: Store<{goods: Product[]}>
     ) {}
 
     ngOnInit(): void {
         this.getCards();
     }
 
+    ngOnDestroy() {
+        this.store.dispatch(clearData());
+    }
+
     getCards() {
-        this.productStore.dispatch(getProducts());
+        this.store.dispatch(getGoods());
         
-        this.userStore.select("user").subscribe(user => {
-            this.productStore.select("products").subscribe(products => {
-                const userProducts = user.userProducts.map(item => item.product_id);
-                
-                this.products = products.filter(product => userProducts.findIndex(item => item === product.id!) !== -1)
-            });
+        this.store.select("goods").subscribe(data => {
+            this.products = data;
         })
     }
 }

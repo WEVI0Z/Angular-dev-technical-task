@@ -7,7 +7,12 @@ import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'header-smart-component',
-  template: `<app-header [navigationList]="navigationList" [logout]="logout" [user]="user"></app-header>`,
+  template: `<app-header
+              [navigationList]="navigationList"
+              [logout]="logout"
+              [user]="user"
+              [store]="this.store"  
+            ></app-header>`,
   styleUrls: ['./header.component.scss']
 })
 export class HeaderSmartComponent implements OnInit {

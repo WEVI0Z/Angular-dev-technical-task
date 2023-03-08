@@ -1,5 +1,4 @@
 import {createAction, props} from "@ngrx/store"
-import { User } from "src/app/shared/interfaces/user"
 
 export const getUser = createAction(
     "[Header] get user",

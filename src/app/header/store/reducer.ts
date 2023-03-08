@@ -6,7 +6,7 @@ export interface userChildState {
     isUser: boolean,
 }
 
-const initialState = {
+const initialState: userChildState = {
     isUser: false,
 };
 

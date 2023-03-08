@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InfoComponent } from '../shared/info/info.component';
-import { listSmartComponent } from './list/list.smart.component';
+import { ListSmartComponent } from './list/list.smart.component';
 
 const routes: Routes = [
     {
@@ -10,7 +10,7 @@ const routes: Routes = [
     },
     {
       path: "product/list",
-      component: listSmartComponent,
+      component: ListSmartComponent,
     }
 ];
 

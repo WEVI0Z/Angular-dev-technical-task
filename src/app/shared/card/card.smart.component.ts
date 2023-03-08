@@ -13,8 +13,9 @@ import { CardComponent } from "./card.component";
         [product]="product"
         [user]="user"
         [cardCondition]="cardCondition"
-        (addToCart)="addToCart()"
-        (removeFromCart)="removeFromCart()"
+        [addToCart]="addToCart"
+        [removeFromCart]="removeFromCart"
+        [store]="this.store"
     ></app-card>`
 })
 export class CardSmartComponent {
@@ -26,18 +27,18 @@ export class CardSmartComponent {
     @ViewChild(CardComponent) cardComponent!: CardComponent
   
     constructor(
-      private userStore: Store<{user: UserState}>,
+      protected store: Store<{user: UserState}>,
     ) {}
   
     ngOnInit(): void {
       this.checkIfInCart();
-      this.userStore.select("user").subscribe(data =>
+      this.store.select("user").subscribe(data =>
         this.user = data.user!  
       );
     }
   
     checkIfInCart() {
-      this.userStore.select("user").subscribe(user => {
+      this.store.select("user").subscribe(user => {
         const userProducts = user.userProducts.map(item => item.product_id);
   
         this.cardCondition = userProducts.findIndex(item => item === this.product.id!) !== -1;
@@ -47,12 +48,12 @@ export class CardSmartComponent {
     addToCart() {
       this.cardCondition = true;
 
-      this.userStore.dispatch(addProductToCart({user_id: this.user.id!, product_id: this.product.id!}))
+      this.store.dispatch(addProductToCart({user_id: this.user.id!, product_id: this.product.id!}))
     }
   
     removeFromCart() {
       this.cardCondition = false;
   
-      this.userStore.dispatch(removeProductFromCart({user_id: this.user.id!, product_id: this.product.id!}))
+      this.store.dispatch(removeProductFromCart({user_id: this.user.id!, product_id: this.product.id!}))
     }
 }

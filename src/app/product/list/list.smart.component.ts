@@ -1,17 +1,17 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Product } from "src/app/shared/interfaces/product";
-import { getProducts } from "src/app/store/product/actions";
+import { getProductsChild } from "../store/actions";
 
 @Component({
     selector: "list-smart-component",
     template: '<app-list [products]="products"></app-list>'
 })
-export class listSmartComponent {
+export class ListSmartComponent {
     products: Product[] = []
 
     constructor(
-        private store: Store<{products: Product[]}>
+        private store: Store<{productsChild: Product[]}>
     ) {}
 
     ngOnInit(): void {
@@ -19,8 +19,8 @@ export class listSmartComponent {
     }
 
     getCards() {
-        this.store.dispatch(getProducts());
+        this.store.dispatch(getProductsChild());
 
-        this.store.select("products").subscribe(products => this.products = products)
+        this.store.select("productsChild").subscribe(products => this.products = products)
     }
 }
