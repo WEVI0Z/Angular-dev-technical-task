@@ -8,11 +8,7 @@ export class AdditionalValidators {
             const password = control.get("password");
             const passwordRepeat = control.get("passwordRepeat");
 
-            if(password?.value !== passwordRepeat?.value) {
-                return {"passwordMismatch": true};
-            } else {
-                return null;
-            }
+            return password?.value !== passwordRepeat?.value ? {"passwordMismatch": true} : null;
         }
     }
 }

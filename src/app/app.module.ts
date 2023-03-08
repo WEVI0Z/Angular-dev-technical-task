@@ -13,10 +13,6 @@ import { UserModule } from './user/user.module';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './store/user/reducer';
-import { UserEffects } from './store/user/effects';
-import { productReducer } from './store/product/reducer';
-import { ProductEffects } from './store/product/effects';
 import { HeaderModule } from './header/header.module';
 import { AppStoreModule } from './app-store.module';
 
@@ -36,7 +32,7 @@ import { AppStoreModule } from './app-store.module';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
-    ),
+    )
   ],
   providers: [
     {
