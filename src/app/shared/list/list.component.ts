@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
@@ -7,5 +8,5 @@ import { Product } from 'src/app/shared/interfaces/product';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  @Input() products: Product[] = [];
+  @Input() products!: Product[];
 }

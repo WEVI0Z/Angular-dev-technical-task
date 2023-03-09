@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -11,7 +11,7 @@ import { User } from 'src/app/shared/interfaces/user';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   form!: FormGroup;
   error: boolean = false
 
@@ -21,7 +21,7 @@ export class LoginComponent {
     private store: Store<{user: UserState}>
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = new FormGroup({
       login: new FormControl(null),
       password: new FormControl(null)
@@ -29,9 +29,6 @@ export class LoginComponent {
 
     this.route.queryParams.subscribe(data => this.error = data["error"]);
 
-  }
-
-  ngAfterViewChecked() {
     this.store.select("user").subscribe(user => {
       if(user.user) {
         this.router.navigate(["product/list"])

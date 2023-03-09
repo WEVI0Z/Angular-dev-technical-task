@@ -19,7 +19,10 @@ export class ProductEffects {
       tap(() => this.store.dispatch(getProducts())),
       mergeMap(() =>
         this.store.select("products").pipe(
-          map(data => actions.getProductsChildSuccess({products: data}))
+          map(data => {
+            console.log(data)
+            return actions.getProductsChildSuccess({products: data});
+          }),
         )),
       )
     );
