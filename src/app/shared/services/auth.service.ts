@@ -74,7 +74,7 @@ export class AuthService {
   removeFromCart(user_id: number, product_id: number): Observable<UserProduct> {
     return this.findUserProductId(user_id, product_id).pipe(
       mergeMap(userProduct => {
-        this.http.delete<UserProduct>("api/userProduct/" + userProduct.id);
+        this.http.delete<UserProduct>("api/userProduct/" + userProduct.id).subscribe();
 
         return new Observable<UserProduct>(subsciber => subsciber.next(userProduct));
       })
