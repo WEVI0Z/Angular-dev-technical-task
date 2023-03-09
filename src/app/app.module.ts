@@ -10,17 +10,17 @@ import { ProductModule } from './product/product.module';
 import { InMemoryDataService } from './shared/in-memory-data.service';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
-import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
+import { AuthInterceptor } from './authorization/interceptors/auth.interceptor';
 import { HeaderModule } from './header/header.module';
 import { AppStoreModule } from './app-store.module';
+import { AuthorizationModule } from './authorization/authorization.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    AuthorizationModule,
     AppStoreModule,
     HeaderModule,
     BrowserModule,

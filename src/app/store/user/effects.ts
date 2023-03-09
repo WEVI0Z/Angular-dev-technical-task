@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import * as actions from "./actions";
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from 'src/app/authorization/auth.service';
 
 @Injectable()
 export class UserEffects {

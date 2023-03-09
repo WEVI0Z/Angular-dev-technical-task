@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { map, mergeMap, Observable, tap } from "rxjs";
 import { Product } from "../shared/interfaces/product";
 import { User } from "../shared/interfaces/user";
-import { AuthService } from "../shared/services/auth.service";
+import { AuthService } from "../authorization/auth.service";
 import { ProductService } from "../shared/services/product.service";
 
 @Injectable({
