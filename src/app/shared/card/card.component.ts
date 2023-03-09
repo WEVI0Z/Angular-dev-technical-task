@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { User } from '../interfaces/user';
 import { Product } from '../interfaces/product';
 import { Store } from '@ngrx/store';
-import { UserState } from 'src/app/store/user/reducer';
+import { CardState } from './store/reducer';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-card',
@@ -14,10 +15,10 @@ export class CardComponent {
   product!: Product;
   
   @Input()
-  user!: User;
+  user!: Observable<User | undefined>;
   
   @Input()
-  cardCondition: boolean = false;
+  cardCondition!: Observable<boolean>;
 
   @Input()
   addToCart!: Function;
@@ -26,5 +27,9 @@ export class CardComponent {
   removeFromCart!: Function
   
   @Input()
-  store!: Store<{user: UserState}>;
+  store!: Store<{card: CardState}>;
+
+  ngOnInit() {
+    this.cardCondition.subscribe(item => console.log(item));
+  }
 }
