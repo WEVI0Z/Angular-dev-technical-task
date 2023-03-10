@@ -1,10 +1,9 @@
-import { Component, Input, ViewChild } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Product } from "src/app/shared/interfaces/product";
 import { UserState } from "src/app/store/user/reducer";
 import { User } from "../interfaces/user";
-import { addProductToCart, removeProductFromCart } from "src/app/store/user/actions";
-import { CardComponent } from "./card.component";
+import { AuthService } from "src/app/authorization/auth.service";
 
 @Component({
     selector: "card-smart-component",
@@ -15,43 +14,43 @@ import { CardComponent } from "./card.component";
         [cardCondition]="cardCondition"
         [addToCart]="addToCart"
         [removeFromCart]="removeFromCart"
-        [store]="this.store"
+        [service]="service"
     ></app-card>`
 })
 export class CardSmartComponent {
     @Input() product!: Product;
-    user!: User;
+    user?: User;
   
-    cardCondition: boolean = false;
+    cardCondition?: boolean;
   
     constructor(
-      protected store: Store<{user: UserState}>,
+      protected service: AuthService,
     ) {}
   
     ngOnInit(): void {
+      this.user = this.service.user;
       this.checkIfInCart();
-      this.store.select("user").subscribe(data =>
-        this.user = data.user!  
-      );
     }
   
     checkIfInCart() {
-      this.store.select("user").subscribe(user => {
-        const userProducts = user.userProducts.map(item => item.product_id);
-  
-        this.cardCondition = userProducts.findIndex(item => item === this.product.id!) !== -1;
-      })
+
+      if(this.user) {
+        const userProducts = this.service.findUserProductsById(this.user.id!).subscribe(userProducts => {
+          this.cardCondition = userProducts.findIndex(item => item.product_id === this.product.id!) !== -1;
+        });
+
+      }
     }
   
     addToCart() {
       this.cardCondition = true;
 
-      this.store.dispatch(addProductToCart({user_id: this.user.id!, product_id: this.product.id!}))
+      this.service.addProductToCart(this.user!.id!, this.product.id!).subscribe()
     }
   
     removeFromCart() {
       this.cardCondition = false;
-  
-      this.store.dispatch(removeProductFromCart({user_id: this.user.id!, product_id: this.product.id!}))
+
+      this.service.removeFromCart(this.user!.id!, this.product.id!).subscribe()
     }
 }
