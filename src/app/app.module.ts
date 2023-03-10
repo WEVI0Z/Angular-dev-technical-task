@@ -11,7 +11,6 @@ import { InMemoryDataService } from './shared/in-memory-data.service';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { AuthInterceptor } from './authorization/interceptors/auth.interceptor';
-import { HeaderModule } from './header/header.module';
 import { AppStoreModule } from './app-store.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 
@@ -22,7 +21,6 @@ import { AuthorizationModule } from './authorization/authorization.module';
   imports: [
     AuthorizationModule,
     AppStoreModule,
-    HeaderModule,
     BrowserModule,
     AppRoutingModule,
     UserModule,

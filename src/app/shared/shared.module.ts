@@ -6,12 +6,16 @@ import { ProductService } from './services/product.service';
 import { RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { CardSmartComponent } from './card/card.smart.component';
+import { HeaderComponent } from './header/header.component';
+import { HeaderSmartComponent } from './header/header-smart.component';
 
 @NgModule({
   declarations: [
     CardComponent,
     ListComponent,
     CardSmartComponent,
+    HeaderComponent,
+    HeaderSmartComponent
   ],
   imports: [
     RouterModule,
@@ -19,7 +23,8 @@ import { CardSmartComponent } from './card/card.smart.component';
   ],
   exports: [
     ListComponent,
-    CardSmartComponent
+    CardSmartComponent,
+    HeaderSmartComponent
   ],
   providers: [
     ProductService

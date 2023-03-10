@@ -23,8 +23,6 @@ export class CardSmartComponent {
     user!: User;
   
     cardCondition: boolean = false;
-
-    @ViewChild(CardComponent) cardComponent!: CardComponent
   
     constructor(
       protected store: Store<{user: UserState}>,

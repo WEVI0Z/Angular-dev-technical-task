@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Navigation } from '../app.component';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { userChildState } from './store/reducer';
+import { Navigation } from 'src/app/app.component';
+import { AuthService } from 'src/app/authorization/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,11 +12,11 @@ export class HeaderComponent {
   navigationList: Navigation[] = [];
   
   @Input()
-  user!: Observable<boolean>;
+  user!: boolean;
   
   @Input()
   logout!: Function;
-  
+
   @Input()
-  store!: Store<{userHeader: userChildState}>;
+  service!: AuthService;
 }
