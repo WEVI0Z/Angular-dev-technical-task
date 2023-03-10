@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable, map } from 'rxjs';
 import { Navigation } from 'src/app/app.component';
 import { AuthService } from 'src/app/authorization/auth.service';
 
