@@ -33,8 +33,8 @@ export class CardSmartComponent {
       protected store: Store<{card: CardState}>
     ) {}
   
-    ngOnInit() {
-      this.store.dispatch(getUser(this.product));
+    async ngOnInit() {
+      await this.store.dispatch(getUser(this.product));
     }
   
     addToCart() {
