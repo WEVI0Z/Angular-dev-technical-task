@@ -5,9 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import { ListSmartComponent } from './list/list-smart.component';
 
 @NgModule({
-  declarations: [
-    ListSmartComponent,
-  ],
   imports: [
     CommonModule,
     SharedModule,

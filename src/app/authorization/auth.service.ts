@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, mergeMap, tap } from 'rxjs';
+import { Observable, Subscriber, map, mergeMap, tap } from 'rxjs';
 import { User } from '../shared/interfaces/user';
 import { Router } from '@angular/router';
 import { UserProduct } from '../shared/interfaces/user-product';
@@ -17,6 +17,10 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
   ) { }
+
+  getCurrentUser(): Observable<User> {
+    return new Observable<User>(subsciber => subsciber.next(this.user));
+  }
 
   get token(): string {
     if(this.user?.expDate && this.user.token) {

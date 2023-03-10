@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Navigation } from 'src/app/app.component';
 import { AuthService } from 'src/app/authorization/auth.service';
 
@@ -12,7 +13,7 @@ export class HeaderComponent {
   navigationList: Navigation[] = [];
   
   @Input()
-  user!: boolean;
+  user!: Observable<boolean>;
   
   @Input()
   logout!: Function;

@@ -5,14 +5,10 @@ import { ListResolver } from './list/list-resolver.servcie';
 import { ListSmartComponent } from './list/list-smart.component';
 
 const routes: Routes = [
-    {
-      path: "goods/list",
-      component: ListSmartComponent,
-      canActivate: [AuthGuard],
-      resolve: {
-        goods: ListResolver,
-      }
-    }
+  {
+    path: "goods/list",
+    loadChildren: () => import("./list/list.module").then(m => m.ListModule),
+  },
 ];
 
 @NgModule({
