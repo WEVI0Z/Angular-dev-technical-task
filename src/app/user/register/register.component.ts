@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdditionalValidators } from 'src/app/shared/additional-validators';
 import { User } from 'src/app/shared/interfaces/user';
-import { createUser } from 'src/app/store/user/actions';
-import { UserState } from 'src/app/store/user/reducer';
+import { createUser } from 'src/app/store/actions';
+import { UserState } from 'src/app/store/reducer';
 
 @Component({
   selector: 'app-register',
@@ -23,12 +23,6 @@ export class RegisterComponent {
   ) {}
 
   ngOnInit() {
-    this.store.select("user").subscribe(user => {
-      if(user.user) {
-        this.router.navigate(["product/list"])
-      }
-    });
-
     this.form = new FormGroup({
       login: new FormControl(null, [
         Validators.required,

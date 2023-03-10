@@ -18,6 +18,9 @@ export const userReducer = createReducer(
     on(actions.loginSuccess, (state, data) => {
         return {user: data.user, userProducts: data.userProducts}
     }),
+    on(actions.loginFailed, (state, data) => {
+    return {user: undefined, userProducts: []}
+    }),
     on(actions.createUserSuccess, (state, data) => {
         return {user: data.user, userProducts: data.userProducts}
     }),

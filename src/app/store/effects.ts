@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import * as actions from "./actions";
 import { AuthService } from 'src/app/authorization/auth.service';
+import { Observable, Subscriber } from 'rxjs';
 
 @Injectable()
 export class UserEffects {
@@ -13,10 +14,15 @@ export class UserEffects {
       ofType(actions.login),
       mergeMap((user) =>
         this.auth.login(user.login, user.password).pipe(
-          mergeMap((user) => 
-            this.auth.findUserProductsById(user.id!).pipe(
-              map(data => actions.loginSuccess({user: user, userProducts: data}))
-            )
+          mergeMap((user) => {
+            if(user) {
+              return this.auth.findUserProductsById(user.id!).pipe(
+                map(data => actions.loginSuccess({user: user, userProducts: data}))
+              )
+            } else {
+              return new Observable().pipe(map(() => actions.loginFailed()));
+            }
+          }
           )
         )
       )

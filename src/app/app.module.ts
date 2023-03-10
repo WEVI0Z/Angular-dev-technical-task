@@ -13,6 +13,7 @@ import { UserModule } from './user/user.module';
 import { AuthInterceptor } from './authorization/interceptors/auth.interceptor';
 import { AppStoreModule } from './app-store.module';
 import { AuthorizationModule } from './authorization/authorization.module';
+import { InfoModule } from './shared/info/info.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AuthorizationModule } from './authorization/authorization.module';
     AppRoutingModule,
     UserModule,
     GoodsModule,
+    InfoModule,
     ProductModule,
     SharedModule,
     HttpClientModule,

@@ -37,10 +37,18 @@ export class AuthService {
     return "";
   }
   
-  login(login: string, password: string): Observable<User> {
+  login(login: string, password: string): Observable<User | undefined> {
     return this.http.get<User[]>("api/users").
       pipe(
-        map(data => this.user = data.filter(item => item.login === login && item.password === password)[0]),
+        map(data => {
+          const index = data.findIndex(item => item.login === login && item.password === password);
+
+          if(index !== -1) {
+            return this.user = data[index];
+          } else {
+            return undefined;
+          }
+        })
       );
   }
   

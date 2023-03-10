@@ -19,5 +19,5 @@ export class HeaderComponent {
   logout!: Function;
 
   @Input()
-  service!: AuthService;
+  auth!: AuthService;
 }

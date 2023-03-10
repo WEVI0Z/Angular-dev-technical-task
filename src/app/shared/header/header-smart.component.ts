@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/authorization/auth.service';
               [navigationList]="navigationList"
               [logout]="logout"
               [user]="user" 
-              [service]="auth"
+              [auth]="auth"
             ></app-header>`,
   styleUrls: ['./header.component.scss']
 })
@@ -20,7 +20,7 @@ export class HeaderSmartComponent {
   constructor(protected auth: AuthService) {}
 
   ngAfterViewChecked() {
-    this.user = this.auth.getCurrentUser().pipe(map(item => !!item), tap(data => console.log(data)));
+    this.user = this.auth.getCurrentUser().pipe(map(item => !!item));
   }
 
   logout() {

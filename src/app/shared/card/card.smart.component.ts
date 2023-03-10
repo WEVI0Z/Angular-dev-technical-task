@@ -1,7 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Product } from "src/app/shared/interfaces/product";
-import { UserState } from "src/app/store/user/reducer";
 import { User } from "../interfaces/user";
 import { AuthService } from "src/app/authorization/auth.service";
 

@@ -13,6 +13,10 @@ export const loginSuccess = createAction(
     props<UserState>()
 )
 
+export const loginFailed = createAction(
+    "[User] login failure"
+)
+
 export const createUser = createAction(
     "[User] create user",
     props<User>()

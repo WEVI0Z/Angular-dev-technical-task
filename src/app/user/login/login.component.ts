@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { UserState } from 'src/app/store/user/reducer';
-import { login } from 'src/app/store/user/actions';
+import { UserState } from 'src/app/store/reducer';
+import { login } from 'src/app/store/actions';
 import { User } from 'src/app/shared/interfaces/user';
 
 @Component({
@@ -28,12 +28,6 @@ export class LoginComponent implements OnInit {
     })
 
     this.route.queryParams.subscribe(data => this.error = data["error"]);
-
-    this.store.select("user").subscribe(user => {
-      if(user.user) {
-        this.router.navigate(["product/list"])
-      }
-    })
   }
 
   submit() {

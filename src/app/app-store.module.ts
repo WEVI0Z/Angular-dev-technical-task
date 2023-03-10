@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './store/user/reducer';
-import { UserEffects } from './store/user/effects';
-import { productReducer } from './store/product/reducer';
-import { ProductEffects } from './store/product/effects';
+import { userReducer } from './store/reducer';
+import { UserEffects } from './store/effects';
 
 @NgModule({
   imports: [
-    StoreModule.forRoot({user: userReducer, products: productReducer}),
-    EffectsModule.forRoot([UserEffects, ProductEffects]),
+    StoreModule.forRoot({user: userReducer}),
+    EffectsModule.forRoot([UserEffects]),
   ],
 })
 export class AppStoreModule { }

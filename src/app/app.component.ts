@@ -1,11 +1,5 @@
-import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import { AuthGuard } from './authorization/guards/auth.guard';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './authorization/auth.service';
-import { ActivatedRoute } from '@angular/router';
-import { User } from './shared/interfaces/user';
-import { Store } from '@ngrx/store';
-import { UserState } from './store/user/reducer';
-import { login, logout } from './store/user/actions';
 
 export interface Navigation {
   name: string,
@@ -23,7 +17,6 @@ export class AppComponent implements OnInit {
 
   constructor(
     protected auth: AuthService,
-    private store: Store<{user: UserState}>
   ) {}
   
   ngOnInit() {
@@ -33,9 +26,5 @@ export class AppComponent implements OnInit {
       {name: "Товары", link: "/product/list"},
       {name: "Корзина", link: "/goods/list"}
     ];
-  }
-
-  logout() {
-    this.store.dispatch(logout())
   }
 }
