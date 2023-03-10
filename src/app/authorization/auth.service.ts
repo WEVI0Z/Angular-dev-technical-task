@@ -44,8 +44,10 @@ export class AuthService {
           const index = data.findIndex(item => item.login === login && item.password === password);
 
           if(index !== -1) {
+            this.router.navigate(["product/list"]);
             return this.user = data[index];
           } else {
+            this.router.navigate(["user/login"], {queryParams: {error: "Failed"}});
             return undefined;
           }
         })
@@ -55,6 +57,7 @@ export class AuthService {
   createUser(user: User): Observable<User> {
     return this.http.post<User>("api/users", user, this.httpOptions).pipe(
       tap(user => {
+        this.router.navigate(["product/list"]);
         user.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTE2MjM5MDIyfQ.Cy9JG4I1j75HLKT-XXE2ItZB1YlOzxfZlP14tGh9Dg0";
         user.expDate = this.genExpDate();
         this.user = user;

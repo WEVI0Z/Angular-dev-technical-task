@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdditionalValidators } from 'src/app/shared/additional-validators';
 import { User } from 'src/app/shared/interfaces/user';
-import { createUser } from 'src/app/store/actions';
-import { UserState } from 'src/app/store/reducer';
+import { createUser } from 'src/app/user/store/actions';
+import { UserState } from 'src/app/user/store/reducer';
 
 @Component({
   selector: 'app-register',

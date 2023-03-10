@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './user/store/reducer';
-import { UserEffects } from './user/store/effects';
+import { userReducer } from './store/reducer';
+import { UserEffects } from './store/effects';
 
 @NgModule({
   imports: [
@@ -10,4 +10,4 @@ import { UserEffects } from './user/store/effects';
     EffectsModule.forRoot([UserEffects]),
   ],
 })
-export class AppStoreModule { }
+export class UserStoreModule { }

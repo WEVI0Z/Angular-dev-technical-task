@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { UserState } from 'src/app/store/reducer';
-import { login } from 'src/app/store/actions';
+import { UserState } from 'src/app/user/store/reducer';
+import { login } from 'src/app/user/store/actions';
 import { User } from 'src/app/shared/interfaces/user';
 
 @Component({

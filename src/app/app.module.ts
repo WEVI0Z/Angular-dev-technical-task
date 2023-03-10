@@ -21,7 +21,6 @@ import { InfoModule } from './shared/info/info.module';
   ],
   imports: [
     AuthorizationModule,
-    AppStoreModule,
     BrowserModule,
     AppRoutingModule,
     UserModule,
