@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Navigation } from 'src/app/app.component';
 import { AuthService } from 'src/app/authorization/auth.service';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,7 @@ export class HeaderComponent {
   navigationList: Navigation[] = [];
   
   @Input()
-  user!: Observable<boolean>;
+  isUser?: boolean;
   
   @Input()
   logout!: Function;

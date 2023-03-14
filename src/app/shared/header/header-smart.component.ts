@@ -1,26 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable, map, tap } from 'rxjs';
+import { Component, Input } from '@angular/core';
 import { Navigation } from 'src/app/app.component';
 import { AuthService } from 'src/app/authorization/auth.service';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'header-smart-component',
   template: `<app-header
               [navigationList]="navigationList"
               [logout]="logout"
-              [user]="user" 
+              [isUser]="isUser" 
               [auth]="auth"
             ></app-header>`,
   styleUrls: ['./header.component.scss']
 })
 export class HeaderSmartComponent {
   @Input() navigationList: Navigation[] = [];
-  user: Observable<boolean> = this.auth.getCurrentUser().pipe(map(item => !!item));
+  isUser: boolean = !!this.auth.token;
 
   constructor(protected auth: AuthService) {}
 
-  ngAfterViewChecked() {
-    this.user = this.auth.getCurrentUser().pipe(map(item => !!item));
+  ngAfterContentChecked() {
+    this.isUser = !!this.auth.token;
   }
 
   logout() {

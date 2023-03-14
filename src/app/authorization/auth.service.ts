@@ -19,7 +19,7 @@ export class AuthService {
   ) { }
 
   getCurrentUser(): Observable<User> {
-    return new Observable<User>(subsciber => subsciber.next(this.user));
+    return this.http.get<User>("api/user/" + this.user?.id);
   }
 
   get token(): string {

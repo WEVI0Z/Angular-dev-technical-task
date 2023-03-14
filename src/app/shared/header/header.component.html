@@ -11,7 +11,7 @@
                 </li>
             </ng-container>
             <li class="header__item">
-                <a (click)="logout()" style="cursor: pointer;" *ngIf="this.user | async" class="header__link">
+                <a (click)="logout()" style="cursor: pointer;" *ngIf="this.isUser" class="header__link">
                     Выйти
                 </a>
             </li>
