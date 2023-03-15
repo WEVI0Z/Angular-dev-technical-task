@@ -1,5 +1,4 @@
 import { Component, Input } from "@angular/core";
-import { Store } from "@ngrx/store";
 import { Product } from "src/app/shared/interfaces/product";
 import { User } from "../interfaces/user";
 import { AuthService } from "src/app/authorization/auth.service";
@@ -10,7 +9,7 @@ import { AuthService } from "src/app/authorization/auth.service";
     <app-card
         [product]="product"
         [user]="user"
-        [cardCondition]="cardCondition"
+        [card]="card"
         [addToCart]="addToCart"
         [removeFromCart]="removeFromCart"
         [service]="service"
@@ -20,7 +19,7 @@ export class CardSmartComponent {
     @Input() product!: Product;
     user?: User;
   
-    cardCondition?: boolean;
+    card: boolean = false;
   
     constructor(
       protected service: AuthService,
@@ -35,20 +34,20 @@ export class CardSmartComponent {
 
       if(this.user) {
         const userProducts = this.service.findUserProductsById(this.user.id!).subscribe(userProducts => {
-          this.cardCondition = userProducts.findIndex(item => item.product_id === this.product.id!) !== -1;
+          this.card = userProducts.findIndex(item => item.product_id === this.product.id!) !== -1;
         });
 
       }
     }
   
     addToCart() {
-      this.cardCondition = true;
+      this.card = true;
 
       this.service.addProductToCart(this.user!.id!, this.product.id!).subscribe()
     }
   
     removeFromCart() {
-      this.cardCondition = false;
+      this.card = false;
 
       this.service.removeFromCart(this.user!.id!, this.product.id!).subscribe()
     }

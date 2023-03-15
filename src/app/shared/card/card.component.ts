@@ -16,7 +16,7 @@ export class CardComponent {
   user?: User;
   
   @Input()
-  cardCondition?: boolean;
+  card: boolean = false;
 
   @Input()
   addToCart!: Function;
