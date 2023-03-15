@@ -4,6 +4,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
+import { UserStoreModule } from '../user-store.module';
 
 const routes: Routes = [
     {

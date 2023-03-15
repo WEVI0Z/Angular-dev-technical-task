@@ -5,7 +5,7 @@ import { ListResolver } from './list/list-resolver.servcie';
 
 const routes: Routes = [
   {
-    path: "goods/list",
+    path: "list",
     canActivate: [AuthGuard],
     loadChildren: () => import("./list/list.module").then(m => m.ListModule),
     resolve: {goods: ListResolver}

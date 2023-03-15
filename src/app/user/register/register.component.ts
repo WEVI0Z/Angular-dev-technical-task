@@ -35,7 +35,7 @@ export class RegisterComponent {
       passwordRepeat: new FormControl(null)
     }, {
       validators: this.additionalValidators.passwordMatch()
-    })
+    });
   }
 
   submit() {

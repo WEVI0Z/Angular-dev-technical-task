@@ -11,9 +11,10 @@ import { InMemoryDataService } from './shared/in-memory-data.service';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { AuthInterceptor } from './authorization/interceptors/auth.interceptor';
-import { AppStoreModule } from './app-store.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { InfoModule } from './product/info/info.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,8 @@ import { InfoModule } from './product/info/info.module';
     InfoModule,
     ProductModule,
     SharedModule,
+    StoreModule.forRoot(),
+    EffectsModule.forRoot(),
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}

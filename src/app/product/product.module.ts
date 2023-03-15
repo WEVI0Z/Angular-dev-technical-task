@@ -6,8 +6,6 @@ import { ListModule } from './list/list.module';
 import { InfoModule } from './info/info.module';
 
 @NgModule({
-  declarations: [
-  ],
   imports: [
     InfoModule,
     CommonModule,

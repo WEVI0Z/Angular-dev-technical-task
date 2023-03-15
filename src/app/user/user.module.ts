@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { UserRoutingModule } from './user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,17 +8,15 @@ import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 
 @NgModule({
-  declarations: [
-  ],
   imports: [
     CommonModule,
     UserRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule,
     UserStoreModule,
+    ReactiveFormsModule,
     LoginModule,
-    RegisterModule
+    RegisterModule,
   ]
 })
 export class UserModule {}
