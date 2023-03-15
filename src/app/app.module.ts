@@ -13,7 +13,7 @@ import { UserModule } from './user/user.module';
 import { AuthInterceptor } from './authorization/interceptors/auth.interceptor';
 import { AppStoreModule } from './app-store.module';
 import { AuthorizationModule } from './authorization/authorization.module';
-import { InfoModule } from './shared/info/info.module';
+import { InfoModule } from './product/info/info.module';
 
 @NgModule({
   declarations: [
