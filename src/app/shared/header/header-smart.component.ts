@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Navigation } from 'src/app/app.component';
-import { AuthService } from 'src/app/authorization/auth.service';
+import { AuthService } from 'src/app/authorization/services/auth.service';
 import { User } from '../interfaces/user';
 
 @Component({

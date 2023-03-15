@@ -4,6 +4,7 @@ import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ListModule } from './list/list.module';
 import { InfoModule } from './info/info.module';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   imports: [
@@ -13,5 +14,8 @@ import { InfoModule } from './info/info.module';
     SharedModule,
     ListModule,
   ],
+  providers: [
+    ProductService
+  ]
 })
 export class ProductModule { }

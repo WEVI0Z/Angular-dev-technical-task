@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../interfaces/user';
 import { Product } from '../interfaces/product';
-import { AuthService } from 'src/app/authorization/auth.service';
+import { AuthService } from 'src/app/authorization/services/auth.service';
 
 @Component({
   selector: 'app-card',

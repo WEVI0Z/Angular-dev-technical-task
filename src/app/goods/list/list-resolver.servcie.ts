@@ -1,10 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Store } from "@ngrx/store";
 import { Product } from "src/app/shared/interfaces/product";
 import { Resolve } from "@angular/router";
 import { Observable } from "rxjs";
-import { ProductService } from "src/app/shared/services/product.service";
-import { GoodsService } from "../goods.service";
+import { GoodsService } from "../services/goods.service";
 
 @Injectable({
     providedIn: "root"

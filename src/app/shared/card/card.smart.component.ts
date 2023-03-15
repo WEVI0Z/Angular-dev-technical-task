@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { Product } from "src/app/shared/interfaces/product";
 import { User } from "../interfaces/user";
-import { AuthService } from "src/app/authorization/auth.service";
+import { AuthService } from "src/app/authorization/services/auth.service";
 
 @Component({
     selector: "card-smart-component",

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
-import { ProductService } from './services/product.service';
+import { ProductService } from '../product/services/product.service';
 import { RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { CardSmartComponent } from './card/card.smart.component';
@@ -25,8 +25,5 @@ import { HeaderSmartComponent } from './header/header-smart.component';
     CardSmartComponent,
     HeaderSmartComponent
   ],
-  providers: [
-    ProductService
-  ]
 })
 export class SharedModule { }
