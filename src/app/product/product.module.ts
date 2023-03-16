@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListComponent } from './list/list.component';
-import { InfoComponent } from './info/info.component';
-
-
+import { ProductRoutingModule } from './product-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { ListModule } from './list/list.module';
+import { InfoModule } from './info/info.module';
+import { ProductService } from './services/product.service';
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    InfoComponent
-  ],
   imports: [
-    CommonModule
+    InfoModule,
+    CommonModule,
+    ProductRoutingModule,
+    SharedModule,
+    ListModule,
+  ],
+  providers: [
+    ProductService
   ]
 })
 export class ProductModule { }

@@ -1,0 +1,52 @@
+@import "./variables.scss";
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: $background-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-size: $headers-font-size;
+}
+
+a {
+    padding: 0;
+    margin: 0;
+
+    text-decoration: none;
+    color: $third-additional-color;
+    
+    transition-duration: 200ms;
+
+    &:hover {
+        color: $second-additional-color;
+    }
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.btn {
+    padding: 7px 20px;
+
+    color: $third-additional-color;
+    font-size: 17px;
+    font-weight: 700;
+
+    background-color: $white;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    transition-duration: 300ms;
+
+    &:hover {
+        opacity: 0.5;
+    }
+}

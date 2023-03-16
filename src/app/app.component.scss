@@ -1,0 +1,13 @@
+@import "../stylesheet/variables.scss";
+
+.app-container {
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: $font-family;
+    color: #868B8E;
+    font-size: $paragraphs-font-size;
+}
